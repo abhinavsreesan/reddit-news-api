@@ -5,6 +5,9 @@ import pandas
 import pandas as pd
 import requests
 from requests.auth import HTTPBasicAuth
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 # Reddit API URL to Call
 reddit_news_url = 'https://oauth.reddit.com/r/news/hot'
@@ -17,6 +20,13 @@ client_id = os.environ.get('CLIENT_ID')
 client_secret = os.environ.get('CLIENT_SECRET')
 user_name = os.environ.get('USER_NAME')
 password = os.environ.get('PASSWORD')
+
+# Email Config
+sender_email = os.environ.get('SENDER_EMAIL')
+receiver_email = os.environ.get('RECEIVER_EMAIL')
+password = os.environ.get('EMAIL_PWD')
+smtp_server = "smtp-mail.outlook.com"
+smpt_port = "587"
 
 
 def reddit_auth(clientid: str, clientsecret: str, username: str, pwd: str) -> str:
@@ -32,7 +42,7 @@ def reddit_auth(clientid: str, clientsecret: str, username: str, pwd: str) -> st
     data = {'grant_type': 'password',
             'username': username,
             'password': pwd}
-    headers = {'User-Agent': 'MyBot/0.0.1'}
+    headers = {'User-Agent': 'MyBot/2.0.1'}
 
     res = requests.post('https://www.reddit.com/api/v1/access_token',
                         auth=auth, data=data, headers=headers)
@@ -71,16 +81,51 @@ def parse_post_data(result: str) -> pandas.DataFrame:
             records.append({
                 'subreddit': post['data']['subreddit'],
                 'title': post['data']['title'],
-                'selftext': post['data']['selftext'],
+                'url': post['data']['url'],
                 'upvote_ratio': post['data']['upvote_ratio'],
                 'ups': post['data']['ups'],
                 'downs': post['data']['downs'],
                 'score': post['data']['score']
             })
         df = pd.DataFrame.from_records(records)
-        return df
+        df = df.sort_values('score', ascending=False)
+        return df.reset_index(drop=True)
     else:
         return -1
+
+
+def send_mail(news_df):
+    message = MIMEMultipart("alternative")
+    message["Subject"] = f"Reddit News Update for {datetime.now().date()}"
+    message["From"] = sender_email
+    message["To"] = receiver_email
+
+    head = f"""\
+    Please find below the news update for today:
+    """
+
+    body = """\
+    <html>
+      <head></head>
+      <body>
+        {0}
+      </body>
+    </html>
+    """.format(news_df.to_html())
+
+    part1 = MIMEText(head, "plain")
+    message.attach(part1)
+
+    part2 = MIMEText(body, "html")
+    message.attach(part2)
+
+    context = ssl.create_default_context()
+    with smtplib.SMTP(smtp_server, smpt_port) as server:
+        server.ehlo()  # Can be omitted
+        server.starttls(context=context)
+        server.ehlo()  # Can be omitted
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, message.as_string())
 
 
 if __name__ == '__main__':
@@ -92,3 +137,5 @@ if __name__ == '__main__':
     data = parse_post_data(result)
     # Convert the data to CSV
     data.to_csv(output_file)
+    # Send out email
+    send_mail(data)
