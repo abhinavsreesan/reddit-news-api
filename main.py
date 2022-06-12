@@ -13,10 +13,10 @@ reddit_news_url = 'https://oauth.reddit.com/r/news/hot'
 output_file = f'data/news_{datetime.now().date()}.csv'
 
 # Reddit API Config Details
-client_id = os.environ.get('client_id')
-client_secret = os.environ.get('client_secret')
-user_name = os.environ.get('user_name')
-password = os.environ.get('password')
+client_id = os.environ.get('CLIENT_ID')
+client_secret = os.environ.get('CLIENT_SECRET')
+user_name = os.environ.get('USER_NAME')
+password = os.environ.get('PASSWORD')
 
 
 def reddit_auth(clientid: str, clientsecret: str, username: str, pwd: str) -> str:
