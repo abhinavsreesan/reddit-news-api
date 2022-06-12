@@ -5,6 +5,7 @@ from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+import praw
 import pandas
 import pandas as pd
 import requests
@@ -17,20 +18,20 @@ reddit_news_url = 'https://oauth.reddit.com/r/news/hot'
 output_file = f'data/news_{datetime.now().date()}.csv'
 
 # Reddit API Config Details
-client_id = os.environ.get('CLIENT_ID')
-client_secret = os.environ.get('CLIENT_SECRET')
-user_name = os.environ.get('USER_NAME')
-password = os.environ.get('PASSWORD')
+client_id = 'dqmfnuEXSZCOlFRZbeNTug' #os.environ.get('CLIENT_ID')
+client_secret = 'Q-3F5mome2qCYh8jjmT3IlYKcFFTLA' #os.environ.get('CLIENT_SECRET')
+user_name = 'Dry_Hunter52' #os.environ.get('USER_NAME')
+password = 'Z!^_(#CdCR8miU.' #os.environ.get('PASSWORD')
 
 # Email Config
 sender_email = os.environ.get('SENDER_EMAIL')
 receiver_email = os.environ.get('RECEIVER_EMAIL')
-password = os.environ.get('EMAIL_PWD')
+email_password = os.environ.get('EMAIL_PWD')
 smtp_server = "smtp-mail.outlook.com"
 smpt_port = "587"
 
 
-def reddit_auth(clientid: str, clientsecret: str, username: str, pwd: str) -> str:
+def reddit_auth() -> str:
     """
     Function to get the access token from Reddit API
     :param clientid: Client ID of the App
@@ -39,14 +40,14 @@ def reddit_auth(clientid: str, clientsecret: str, username: str, pwd: str) -> st
     :param pwd: Password of the account
     :return: access_token if the response is OK else -1
     """
-    auth = HTTPBasicAuth(clientid, clientsecret)
+    auth = HTTPBasicAuth(client_id, client_secret)
     data = {'grant_type': 'password',
-            'username': username,
-            'password': pwd}
-    headers = {'User-Agent': 'Github'}
+            'username': user_name,
+            'password': password,
+            'redirect_uri': 'https://zdfsg.com'}
+    headers = {'User-Agent': 'Github1', 'Content-Type': 'application/x-www-form-urlencoded'}
 
-    res = requests.post('https://www.reddit.com/api/v1/access_token',
-                        auth=auth, data=data, headers=headers)
+    res = requests.post('https://www.reddit.com/api/v1/access_token', auth=auth, data=data, headers=headers)
     if res.status_code == 200:
         access_token = res.json()['access_token']
         return access_token
@@ -125,13 +126,13 @@ def send_mail(news_df):
         server.ehlo()  # Can be omitted
         server.starttls(context=context)
         server.ehlo()  # Can be omitted
-        server.login(sender_email, password)
+        server.login(sender_email, email_password)
         server.sendmail(sender_email, receiver_email, message.as_string())
 
 
 if __name__ == '__main__':
     # Get the access token
-    token = reddit_auth(client_id, client_secret, user_name, password)
+    token = reddit_auth()
     # Call the API
     result = get_data_from_api(reddit_news_url, token)
     # Parse the data
