@@ -25,7 +25,7 @@ password = os.environ.get('PASSWORD')
 # Email Config
 sender_email = os.environ.get('SENDER_EMAIL')
 receiver_email = os.environ.get('RECEIVER_EMAIL')
-email_password = os.environ.get('EMAIL_PWD')
+email_password = os.environ.get('EMAIL_PWD').replace("'", "\'")
 smtp_server = "smtp-mail.outlook.com"
 smpt_port = "587"
 
@@ -42,8 +42,7 @@ def reddit_auth() -> str:
     auth = HTTPBasicAuth(client_id, client_secret)
     data = {'grant_type': 'password',
             'username': user_name,
-            'password': password,
-            'redirect_uri': 'https://zdfsg.com'}
+            'password': password}
     headers = {'User-Agent': 'Github1', 'Content-Type': 'application/x-www-form-urlencoded'}
 
     res = requests.post('https://www.reddit.com/api/v1/access_token', auth=auth, data=data, headers=headers)
