@@ -1,26 +1,26 @@
-,subreddit,title,url,upvote_ratio,ups,downs,score
-0,news,Judge blocks Texas investigating families of trans youth,https://apnews.com/article/politics-greg-abbott-texas-lawsuits-child-welfare-7692c56aa008effbbefcac31ac677dc4,0.83,57502,0,57502
-1,news,$1.5M to be paid to police chief who displayed Nazi insignia,https://apnews.com/article/b7bd34b6ddfdb3c1441862935dad7ea5,0.89,35782,0,35782
-2,news,Auburn man arrested for leaving flowers on fiancé's grave found guilty,https://www.wbrc.com/2022/06/10/auburn-man-arrested-leaving-flowers-fiancs-grave-found-guilty/,0.93,34483,0,34483
-3,news,"‘This is pretty serious’: Singer Justin Bieber diagnosed with Ramsay Hunt syndrome, says half his face is paralyzed",https://www.click2houston.com/news/local/2022/06/10/this-is-pretty-serious-singer-justin-bieber-diagnosed-with-ramsay-hunt-syndrome-says-half-his-face-is-paralyzed/,0.9,18730,0,18730
-4,news,Large group of masked men detained in Coeur d'Alene near Pride in the Park,https://www.spokesman.com/stories/2022/jun/11/large-group-of-masked-men-detained-in-coeur-dalene/,0.95,18499,0,18499
-5,news,Judge: Georgia county can't deny gender surgery to deputy,https://apnews.com/article/us-supreme-court-politics-health-georgia-business-1bb2ff530c1ceeebe9bcbf127592e0f1,0.92,9509,0,9509
-6,news,Chicago officer resigns after video shows physical struggle with woman walking dog,https://www.nbcnews.com/news/us-news/chicago-officer-resigns-video-shows-physical-struggle-woman-walking-do-rcna33094,0.96,6571,0,6571
-7,news,11 year old Ulvade survivor suffered heart issues at friends memorial,https://globalnews.ca/news/8911297/uvalde-survivor-heart-attack-best-friends-memorial/,0.96,5924,0,5924
-8,news,Thousands rally for gun reform in US after surge in mass shootings.,https://english.alarabiya.net/News/world/2022/06/11/Thousands-rally-for-gun-reform-in-US-after-surge-in-mass-shootings,0.87,3853,0,3853
-9,news,31 people arrested for conspiracy to riot near a Pride parade in Idaho,https://www.cnn.com/2022/06/11/us/31-people-arrested-for-conspiracy-to-riot-near-idaho-pride-parade/index.html,0.96,3705,0,3705
-10,news,Man pleads guilty to defrauding victims of more than $2.7 million with pesticides alleged to help prevent Covid-19,https://edition.cnn.com/2022/06/10/us/new-jersey-pesticides-covid-19-guilty-plea/index.html,0.97,2496,0,2496
-11,news,University of New Hampshire fraternity members accused of hazing; 46 issued arrest warrants,https://www.cnn.com/2022/06/11/us/unh-fraternity-hazing-charges/index.html,0.97,1977,0,1977
-12,news,Man arrested after starting fire at Satanic Temple in Salem,https://www.cbsnews.com/boston/news/satanic-temple-salem-fire-man-arrested-daniel-lucey/,0.96,1945,0,1945
-13,news,Big landlords jump into the homebuilding business as demand for single-family rentals surges,https://www.cnbc.com/2022/06/10/big-landlords-jump-into-the-homebuilding-as-demand-for-single-family-rentals-surges.html,0.94,1820,0,1820
-14,news,"City of Ottawa denies ""outrageous"" request to fly Russian flag",https://www.cbc.ca/news/canada/ottawa/city-denied-outrageous-request-to-fly-russian-flag-1.6484890?cmp=rss,0.93,1371,0,1371
-15,news,Ex-NYPD cop who fired gun into Atlantic Ocean gets prison,https://www.fox5ny.com/news/ex-nypd-cop-gets-prison-for-firing-gun-into-ocean,0.78,1198,0,1198
-16,news,Gasoline glitch: California station sells gas for 69 cents per gallon,https://www.kiro7.com/news/trending/gasoline-glitch-california-station-sells-gas-69-cents-per-gallon/WQLGO6ANCZECZDQXYON6KH22JI/,0.95,1114,0,1114
-17,news,Officials investigate fire that damaged an Oregon ‘pregnancy crisis center’,https://www.theguardian.com/us-news/2022/jun/11/fire-pregnancy-crisis-center-oregon-portland,0.94,937,0,937
-18,news,"830,000 Teslas with Autopilot under NHTSA Investigation, Recall Possible",https://www.caranddriver.com/news/a40260652/teslas-autopilot-nhtsa-investigation-recall-possible/,0.94,888,0,888
-19,news,Michigan drivers can now purchase digital license plates,https://www.wxyz.com/news/michigan-drivers-can-now-purchase-digital-license-plates,0.92,592,0,592
-20,news,"Blacklist Dubai over failure to crack down on Russian oligarchs, say campaigners",https://www.theguardian.com/world/2022/jun/11/blacklist-dubai-uae-over-russian-oligarchs-say-ukraine-campaigners,0.95,496,0,496
-21,news,Suspect in Maryland factory shooting that killed 3 charged with murder,https://abcnews.go.com/US/suspect-maryland-factory-shooting-killed-charged-murder/story?id=85329516,0.94,482,0,482
-22,news,Los Angeles: 9 pedestrians hit in by driver claiming gun was pointed at him,https://www.cnn.com/2022/06/11/us/pedestrians-hit-in-los-angeles-by-truck/index.html,0.91,287,0,287
-23,news,Cristiano Ronaldo: US judge dismisses $25m lawsuit over rape allegations,https://www.theguardian.com/football/2022/jun/11/us-cristiano-ronaldo-lawsuit-dismissed,0.88,267,0,267
-24,news,The Google engineer who thinks the company’s AI has come to life,https://www.washingtonpost.com/technology/2022/06/11/google-ai-lamda-blake-lemoine/,0.83,198,0,198
+,subreddit,title,selftext,upvote_ratio,ups,downs,score
+0,news,Large group of masked men detained in Coeur d'Alene near Pride in the Park,,0.95,16978,0,16978
+1,news,31 people arrested for conspiracy to riot near a Pride parade in Idaho,,0.96,2818,0,2818
+2,news,$1.5M to be paid to police chief who displayed Nazi insignia,,0.89,35061,0,35061
+3,news,Thousands rally for gun reform in US after surge in mass shootings.,,0.87,3539,0,3539
+4,news,Man arrested after starting fire at Satanic Temple in Salem,,0.96,1793,0,1793
+5,news,Gasoline glitch: California station sells gas for 69 cents per gallon,,0.95,1009,0,1009
+6,news,Big landlords jump into the homebuilding business as demand for single-family rentals surges,,0.94,1758,0,1758
+7,news,Judge: Georgia county can't deny gender surgery to deputy,,0.92,9430,0,9430
+8,news,Chicago officer resigns after video shows physical struggle with woman walking dog,,0.96,6507,0,6507
+9,news,Man pleads guilty to defrauding victims of more than $2.7 million with pesticides alleged to help prevent Covid-19,,0.97,2454,0,2454
+10,news,"Blacklist Dubai over failure to crack down on Russian oligarchs, say campaigners",,0.95,453,0,453
+11,news,Michigan drivers can now purchase digital license plates,,0.92,562,0,562
+12,news,"830,000 Teslas with Autopilot under NHTSA Investigation, Recall Possible",,0.94,867,0,867
+13,news,The Google engineer who thinks the company’s AI has come to life,,0.82,168,0,168
+14,news,University of New Hampshire fraternity members accused of hazing; 46 issued arrest warrants,,0.97,1947,0,1947
+15,news,Ex-NYPD cop who fired gun into Atlantic Ocean gets prison,,0.78,1190,0,1190
+16,news,Suspect in Maryland factory shooting that killed 3 charged with murder,,0.93,468,0,468
+17,news,Los Angeles: 9 pedestrians hit in by driver claiming gun was pointed at him,,0.91,277,0,277
+18,news,Officials investigate fire that damaged an Oregon ‘pregnancy crisis center’,,0.94,918,0,918
+19,news,11 year old Ulvade survivor suffered heart issues at friends memorial,,0.96,5912,0,5912
+20,news,"City of Ottawa denies ""outrageous"" request to fly Russian flag",,0.93,1347,0,1347
+21,news,Auburn man arrested for leaving flowers on fiancé's grave found guilty,,0.93,34460,0,34460
+22,news,Cristiano Ronaldo: US judge dismisses $25m lawsuit over rape allegations,,0.88,260,0,260
+23,news,"‘This is pretty serious’: Singer Justin Bieber diagnosed with Ramsay Hunt syndrome, says half his face is paralyzed",,0.9,18742,0,18742
+24,news,Judge blocks Texas investigating families of trans youth,,0.83,57505,0,57505
