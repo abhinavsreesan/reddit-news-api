@@ -25,7 +25,7 @@ password = os.environ.get('PASSWORD')
 # Email Config
 sender_email = os.environ.get('SENDER_EMAIL')
 receiver_email = os.environ.get('RECEIVER_EMAIL')
-email_password = os.environ.get('EMAIL_PWD').replace("'", "\'")
+email_password = os.environ.get('EMAIL_PWD')
 smtp_server = "smtp-mail.outlook.com"
 smpt_port = "587"
 
