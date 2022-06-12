@@ -43,7 +43,7 @@ def reddit_auth(clientid: str, clientsecret: str, username: str, pwd: str) -> st
     data = {'grant_type': 'password',
             'username': username,
             'password': pwd}
-    headers = {'User-Agent': 'MyBot/2.0.1'}
+    headers = {'User-Agent': 'Github'}
 
     res = requests.post('https://www.reddit.com/api/v1/access_token',
                         auth=auth, data=data, headers=headers)
@@ -61,7 +61,7 @@ def get_data_from_api(api_url: str, token: str) -> requests:
     :param token: Token received from the Auth URL
     :return: Return the request output if status is OK else -1
     """
-    headers = {'User-Agent': 'MyBot/0.0.1', 'Authorization': f"bearer {token}"}
+    headers = {'User-Agent': 'Github', 'Authorization': f"bearer {token}"}
     res = requests.get(api_url, headers=headers)
     if res.status_code == 200:
         return res
