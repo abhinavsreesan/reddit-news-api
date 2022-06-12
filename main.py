@@ -42,7 +42,8 @@ def reddit_auth() -> str:
     auth = HTTPBasicAuth(client_id, client_secret)
     data = {'grant_type': 'password',
             'username': user_name,
-            'password': password}
+            'password': password,
+            'redirect_uri': 'https://zdfsg.com'}
     headers = {'User-Agent': 'Github1', 'Content-Type': 'application/x-www-form-urlencoded'}
 
     res = requests.post('https://www.reddit.com/api/v1/access_token', auth=auth, data=data, headers=headers)
