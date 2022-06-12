@@ -1,13 +1,14 @@
 import os
+import smtplib
+import ssl
 from datetime import datetime
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 import pandas
 import pandas as pd
 import requests
 from requests.auth import HTTPBasicAuth
-import smtplib, ssl
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 
 # Reddit API URL to Call
 reddit_news_url = 'https://oauth.reddit.com/r/news/hot'

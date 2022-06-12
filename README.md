@@ -10,6 +10,9 @@
 - USER_NAME : Reddit Username
 - PASSWORD : Reddit Password
 - ACCESS_TOKEN : GitHub Access Token
+- SENDER_EMAIL: Email address of Sender
+- EMAIL_PWD: Email Password of Sender
+- RECEIVER_EMAIL: Email address of Receiver
 
 
 Ref: https://towardsdatascience.com/how-to-use-the-reddit-api-in-python-5e05ddfd1e5c
