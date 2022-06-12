@@ -17,10 +17,10 @@ reddit_news_url = 'https://oauth.reddit.com/r/news/hot'
 output_file = f'data/news_{datetime.now().date()}.csv'
 
 # Reddit API Config Details
-client_id = 'dqmfnuEXSZCOlFRZbeNTug' #os.environ.get('CLIENT_ID')
-client_secret = 'Q-3F5mome2qCYh8jjmT3IlYKcFFTLA' #os.environ.get('CLIENT_SECRET')
-user_name = 'Dry_Hunter52' #os.environ.get('USER_NAME')
-password = 'Z!^_(#CdCR8miU.' #os.environ.get('PASSWORD')
+client_id = os.environ.get('CLIENT_ID')
+client_secret = os.environ.get('CLIENT_SECRET')
+user_name = os.environ.get('USER_NAME')
+password = os.environ.get('PASSWORD')
 
 # Email Config
 sender_email = os.environ.get('SENDER_EMAIL')
@@ -42,8 +42,7 @@ def reddit_auth() -> str:
     auth = HTTPBasicAuth(client_id, client_secret)
     data = {'grant_type': 'password',
             'username': user_name,
-            'password': password,
-            'redirect_uri': 'https://zdfsg.com'}
+            'password': password}
     headers = {'User-Agent': 'Github1', 'Content-Type': 'application/x-www-form-urlencoded'}
 
     res = requests.post('https://www.reddit.com/api/v1/access_token', auth=auth, data=data, headers=headers)
