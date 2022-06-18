@@ -18,15 +18,15 @@ reddit_news_url = 'https://oauth.reddit.com/r/news/hot'
 output_file = f'data/news_{datetime.now().date()}.csv'
 
 # Reddit API Config Details
-client_id = os.environ.get('CLIENT_ID')
-client_secret = os.environ.get('CLIENT_SECRET')
-user_name = os.environ.get('USER_NAME')
-password = os.environ.get('PASSWORD')
+client_id = 'dqmfnuEXSZCOlFRZbeNTug' #os.environ.get('CLIENT_ID')
+client_secret = 'Q-3F5mome2qCYh8jjmT3IlYKcFFTLA' #os.environ.get('CLIENT_SECRET')
+user_name = 'Dry_Hunter52' #os.environ.get('USER_NAME')
+password = 'Z!^_(#CdCR8miU.' #os.environ.get('PASSWORD')
 
 # Email Config
-sender_email = os.environ.get('SENDER_EMAIL')
-receiver_email = os.environ.get('RECEIVER_EMAIL')
-email_password = os.environ.get('EMAIL_PWD')
+sender_email = 'githubredditapi345@gmail.com' #os.environ.get('SENDER_EMAIL')
+receiver_email = 'biggesmallz96@gmail.com' #os.environ.get('RECEIVER_EMAIL')
+email_password = "gtchfxiqfapthkrk" #os.environ.get('EMAIL_PWD')
 smtp_server = "smtp.gmail.com"
 smpt_port = "465"
 
@@ -96,7 +96,9 @@ def parse_post_data(result: str) -> pandas.DataFrame:
 
 
 def send_mail(news_df):
-    subject = 'Reddit News for '
+    today = datetime.now()
+    date_formatted = today.strftime("%B %d, %Y")
+    subject = f'Reddit News for {date_formatted}'
     body = """\
         <html>
           <head></head>
