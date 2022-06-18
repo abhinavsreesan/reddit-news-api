@@ -1,6 +1,7 @@
 import os
 import smtplib
 import ssl
+from email.message import EmailMessage
 from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -26,8 +27,8 @@ password = os.environ.get('PASSWORD')
 sender_email = os.environ.get('SENDER_EMAIL')
 receiver_email = os.environ.get('RECEIVER_EMAIL')
 email_password = os.environ.get('EMAIL_PWD')
-smtp_server = "smtp-mail.outlook.com"
-smpt_port = "587"
+smtp_server = "smtp.gmail.com"
+smpt_port = "465"
 
 
 def reddit_auth() -> str:
@@ -95,37 +96,25 @@ def parse_post_data(result: str) -> pandas.DataFrame:
 
 
 def send_mail(news_df):
-    message = MIMEMultipart("alternative")
-    message["Subject"] = f"Reddit News Update for {datetime.now().date()}"
-    message["From"] = sender_email
-    message["To"] = receiver_email
-
-    head = f"""\
-    Please find below the news update for today:
-    """
-
+    subject = 'Reddit News for '
     body = """\
-    <html>
-      <head></head>
-      <body>
-        {0}
-      </body>
-    </html>
-    """.format(news_df.to_html())
-
-    part1 = MIMEText(head, "plain")
-    message.attach(part1)
-
-    part2 = MIMEText(body, "html")
-    message.attach(part2)
-
+        <html>
+          <head></head>
+          <body>
+            {0}
+          </body>
+        </html>
+        """.format(news_df.to_html())
+    em = EmailMessage()
+    em['From'] = sender_email
+    em['To'] = receiver_email
+    em['Subject'] = subject
+    body_html = MIMEText(body, "html")
+    em.set_content(body_html)
     context = ssl.create_default_context()
-    with smtplib.SMTP(smtp_server, smpt_port) as server:
-        server.ehlo()  # Can be omitted
-        server.starttls(context=context)
-        server.ehlo()  # Can be omitted
-        server.login(sender_email, email_password)
-        server.sendmail(sender_email, receiver_email, message.as_string())
+    with smtplib.SMTP_SSL(smtp_server, smpt_port, context=context) as smtp:
+        smtp.login(sender_email, email_password)
+        smtp.sendmail(sender_email, receiver_email, em.as_string())
 
 
 if __name__ == '__main__':
