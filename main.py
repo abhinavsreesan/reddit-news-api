@@ -1,14 +1,14 @@
 import os
 import smtplib
 import ssl
-from email.message import EmailMessage
 from datetime import datetime
-from email.mime.multipart import MIMEMultipart
+from email.message import EmailMessage
 from email.mime.text import MIMEText
 
 import pandas
 import pandas as pd
 import requests
+from discord import SyncWebhook
 from requests.auth import HTTPBasicAuth
 
 # Reddit API URL to Call
@@ -29,6 +29,9 @@ receiver_email = os.environ.get('RECEIVER_EMAIL')
 email_password = os.environ.get('EMAIL_PWD')
 smtp_server = "smtp.gmail.com"
 smpt_port = "465"
+
+# Discord Config
+web_hook = os.environ.get('DISCORD_WEBHOOK')
 
 
 def reddit_auth() -> str:
@@ -75,11 +78,12 @@ def parse_post_data(result: str) -> pandas.DataFrame:
     :param result: Output from the API Request
     :return: A pandas dataframe if the API output has data else -1
     """
+    webhook = SyncWebhook.from_url(web_hook)
+    webhook.send(f"News For {datetime.now().date()}")
     if len(result.json()) > 0:
         records =[]
         for post in result.json()['data']['children']:
-            # append relevant data to dataframe
-            records.append({
+            current_record = {
                 'subreddit': post['data']['subreddit'],
                 'title': post['data']['title'],
                 'url': post['data']['url'],
@@ -87,7 +91,10 @@ def parse_post_data(result: str) -> pandas.DataFrame:
                 'ups': post['data']['ups'],
                 'downs': post['data']['downs'],
                 'score': post['data']['score']
-            })
+            }
+            # append relevant data to dataframe
+            records.append(current_record)
+            webhook.send(f"{post['data']['title']} : {post['data']['url']}")
         df = pd.DataFrame.from_records(records)
         df = df.sort_values('score', ascending=False)
         return df.reset_index(drop=True)
@@ -119,6 +126,11 @@ def send_mail(news_df):
         smtp.sendmail(sender_email, receiver_email, em.as_string())
 
 
+def send_discord_message(file_path):
+    webhook = SyncWebhook.from_url(web_hook)
+    webhook.send(file=file_path)
+
+
 if __name__ == '__main__':
     # Get the access token
     token = reddit_auth()
@@ -130,3 +142,4 @@ if __name__ == '__main__':
     data.to_csv(output_file)
     # Send out email
     # send_mail(data)
+    #send_discord_message(data)
