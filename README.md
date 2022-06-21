@@ -1,3 +1,4 @@
+[![Get Data from Reddit News API](https://github.com/abhinavsreesan/reddit-news-api/actions/workflows/run-python-script.yml/badge.svg)](https://github.com/abhinavsreesan/reddit-news-api/actions/workflows/run-python-script.yml)
 # Python Script to Read Reddit News API Data
 
 - This is a simple python script that reads data from the 'https://oauth.reddit.com/r/news/hot' using OAuth access token.
