@@ -3,6 +3,7 @@ name: Get Data from Reddit News API
 on:
   schedule:
     - cron: '30 6 * * *' # runs at 12:00 UTC everyday
+  workflow_dispatch:
 
 
 jobs:

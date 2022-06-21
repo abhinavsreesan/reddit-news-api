@@ -9,10 +9,11 @@ import pandas
 import pandas as pd
 import requests
 from discord import SyncWebhook
+from numpy.testing._private.parameterized import param
 from requests.auth import HTTPBasicAuth
 
 # Reddit API URL to Call
-reddit_news_url = 'https://oauth.reddit.com/r/news/hot'
+reddit_news_url = 'https://oauth.reddit.com/r/worldnews/hot'
 
 # Output File Name
 output_file = f'data/news_{datetime.now().date()}.csv'
@@ -65,7 +66,8 @@ def get_data_from_api(api_url: str, token: str) -> requests:
     :return: Return the request output if status is OK else -1
     """
     headers = {'User-Agent': 'Github', 'Authorization': f"bearer {token}"}
-    res = requests.get(api_url, headers=headers)
+    params = {'limit': 5}
+    res = requests.get(api_url, headers=headers, params=params)
     if res.status_code == 200:
         return res
     else:
@@ -126,11 +128,6 @@ def send_mail(news_df):
         smtp.sendmail(sender_email, receiver_email, em.as_string())
 
 
-def send_discord_message(file_path):
-    webhook = SyncWebhook.from_url(web_hook)
-    webhook.send(file=file_path)
-
-
 if __name__ == '__main__':
     # Get the access token
     token = reddit_auth()
@@ -142,4 +139,3 @@ if __name__ == '__main__':
     data.to_csv(output_file)
     # Send out email
     # send_mail(data)
-    #send_discord_message(data)
