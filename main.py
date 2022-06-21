@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 import pandas
 import pandas as pd
 import requests
-from discord import SyncWebhook
+from discord_webhook import DiscordWebhook, DiscordEmbed
 from requests.auth import HTTPBasicAuth
 
 # Reddit API URL to Call
@@ -79,8 +79,7 @@ def parse_post_data(result: str) -> pandas.DataFrame:
     :param result: Output from the API Request
     :return: A pandas dataframe if the API output has data else -1
     """
-    webhook = SyncWebhook.from_url(web_hook)
-    webhook.send(f"News For {datetime.now().date()}")
+    webhook = DiscordWebhook(url=web_hook, content=f"News For {datetime.now().date()}")
     if len(result.json()) > 0:
         records =[]
         for post in result.json()['data']['children']:
@@ -95,9 +94,11 @@ def parse_post_data(result: str) -> pandas.DataFrame:
             }
             # append relevant data to dataframe
             records.append(current_record)
-            webhook.send(f"{post['data']['title']} : {post['data']['url']}")
+            embed = DiscordEmbed(title=post['data']['title'], description=post['data']['url'], url=post['data']['url'])
+            webhook.add_embed(embed)
         df = pd.DataFrame.from_records(records)
         df = df.sort_values('score', ascending=False)
+        response = webhook.execute()
         return df.reset_index(drop=True)
     else:
         return -1
