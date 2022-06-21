@@ -65,7 +65,7 @@ def get_data_from_api(api_url: str, token: str) -> requests:
     :return: Return the request output if status is OK else -1
     """
     headers = {'User-Agent': 'Github', 'Authorization': f"bearer {token}"}
-    params = {'limit': 5}
+    params = {'limit': 25}
     res = requests.get(api_url, headers=headers, params=params)
     if res.status_code == 200:
         return res
