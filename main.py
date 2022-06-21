@@ -9,7 +9,6 @@ import pandas
 import pandas as pd
 import requests
 from discord import SyncWebhook
-from numpy.testing._private.parameterized import param
 from requests.auth import HTTPBasicAuth
 
 # Reddit API URL to Call
